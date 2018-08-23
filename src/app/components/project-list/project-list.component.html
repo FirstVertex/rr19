@@ -1,0 +1,97 @@
+<button (click)="addProject()" type="button">Add a Project</button>
+<button (click)="exportToExcel()" type="button">Export to Excel</button>
+<button (click)="isSearchVisible=!isSearchVisible" type="button">Filter</button>
+<div class="search" *ngIf="isSearchVisible">
+  <h3>Filter</h3>
+  <div>
+    <strong>Title:</strong>
+    <input type="text" [(ngModel)]="searchParams.title" />
+  </div>
+  <div>
+    <strong>Division:</strong>
+    <input type="text" [(ngModel)]="searchParams.division" />
+  </div>
+  <div>
+    <strong>Owner:</strong>
+    <input type="text" [(ngModel)]="searchParams.project_owner" />
+  </div>
+  <div>
+    <strong>Budget:</strong>
+    <input type="text" [(ngModel)]="searchParams.budget" />
+  </div>
+  <div>
+    <strong>Status:</strong>
+    <input type="text" [(ngModel)]="searchParams.status" />
+  </div>
+  <div>
+    <strong>Created:</strong>
+    <input type="date" [(ngModel)]="searchParams.createdFrom" />
+    to
+    <input type="date" [(ngModel)]="searchParams.createdTo" />
+  </div>
+  <div>
+    <strong>Modified:</strong>
+    <input type="date" [(ngModel)]="searchParams.modifiedFrom" />
+    to
+    <input type="date" [(ngModel)]="searchParams.modifiedTo" />
+  </div>
+  <button (click)="isSearchVisible=false" type="button">Close</button>
+</div>
+<h3 *ngIf="projects" class="align-right">
+    <span *ngIf="visibleProjects.length !== projects.length">Showing <em>{{visibleProjects.length}}</em> of </span>
+    <em>{{projects.length}}</em> Projects
+  </h3>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Division</th>
+      <th>Owner</th>
+      <th>Budget</th>
+      <th>Status</th>
+      <th>Created</th>
+      <th>Modified</th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let vm of visibleProjects">
+      <tr *ngIf="vm.state==='view'">
+        <td>{{vm.project.title}}</td>
+        <td>{{vm.project.division}}</td>
+        <td>{{vm.project.project_owner}}</td>
+        <td>{{vm.project.budget | currency}}</td>
+        <td>{{vm.project.status}}</td>
+        <td>{{vm.project.created}}</td>
+        <td>{{vm.project.modified}}</td>
+        <td><button (click)="vm.toggle()" type="button">Edit</button></td>
+      </tr>
+      <tr *ngIf="vm.state==='form'">
+        <td>{{vm.project.title}}</td>
+        <td>{{vm.project.division}}</td>
+        <td>
+          <input type="text" [(ngModel)]="vm.project.project_owner" />
+        </td>
+        <td>
+          <input type="number" [(ngModel)]="vm.project.budget" />
+        </td>
+        <td>
+          <input type="text" [(ngModel)]="vm.project.status" />
+        </td>
+        <td>{{vm.project.created}}</td>
+        <td>{{vm.project.modified}}</td>
+        <td>
+          <button (click)="toggle(vm)" type="button">Done</button>
+          <button (click)="details(vm)" type="button">Details</button>
+        </td>
+      </tr>
+    </ng-container>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="3">Total</td>
+      <td>{{budgetTotal | currency}}</td>
+      <td colspan="4">&nbsp;</td>
+    </tr>
+  </tfoot>
+</table>

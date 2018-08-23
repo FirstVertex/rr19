@@ -1,0 +1,42 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+tfoot, thead {
+  font-size: larger;
+  background: #ddd;
+  border: 1px solid #bbb;
+  font-weight: bold;
+}
+
+tr, td, th {
+  padding: 6px 8px;
+}
+
+thead td, thead th,
+tbody td, tbody th {
+  text-align: right;
+}
+
+thead td:first-child, thead th:first-child,
+tbody td:first-child, tbody th:first-child {
+  text-align: left;
+}
+tfoot td {
+  text-align: right;
+}
+
+.search {
+  margin: 10px;
+  background: #ddd;
+  border: 1px solid #bbb;
+  padding: 10px;
+}
+.search > div {
+  margin: 6px 8px;
+}
+
+.align-right {
+  text-align: right;
+}
