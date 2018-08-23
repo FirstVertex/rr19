@@ -64,7 +64,10 @@
         <td>{{vm.project.status}}</td>
         <td>{{vm.project.created}}</td>
         <td>{{vm.project.modified}}</td>
-        <td><button (click)="vm.toggle()" type="button">Edit</button></td>
+        <td>
+          <button (click)="vm.toggle()" type="button">Edit</button>
+          <button (click)="details(vm)" type="button">Details</button>
+        </td>
       </tr>
       <tr *ngIf="vm.state==='form'">
         <td>{{vm.project.title}}</td>
@@ -82,7 +85,6 @@
         <td>{{vm.project.modified}}</td>
         <td>
           <button (click)="toggle(vm)" type="button">Done</button>
-          <button (click)="details(vm)" type="button">Details</button>
         </td>
       </tr>
     </ng-container>

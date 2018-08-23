@@ -53,7 +53,7 @@ export class ProjectListComponent implements OnInit {
   }
 
   public details(vm: ProjectViewModel) {
-    this.notificationService.info('Display Project details');
+    this.notificationService.info(`Display Project details for ${vm.project.title}`);
   }
 
   public addProject() {
