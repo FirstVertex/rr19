@@ -37,6 +37,17 @@ tfoot td {
   margin: 6px 8px;
 }
 
-.align-right {
+.search input {
+  width: 180px;
+}
+
+.search div strong:first-child {
+  width: 120px;
   text-align: right;
+  margin-right: 8px;
+  display: inline-block;
+}
+
+h3 {
+  margin: 5px 0;
 }

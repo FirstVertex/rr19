@@ -2,3 +2,7 @@
 body {
   font-family: sans-serif;
 }
+
+.align-right {
+  text-align: right;
+}

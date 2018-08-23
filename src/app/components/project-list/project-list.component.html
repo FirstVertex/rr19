@@ -4,35 +4,35 @@
 <div class="search" *ngIf="isSearchVisible">
   <h3>Filter</h3>
   <div>
-    <strong>Title:</strong>
+    <strong>Title</strong>
     <input type="text" [(ngModel)]="searchParams.title" />
   </div>
   <div>
-    <strong>Division:</strong>
+    <strong>Division</strong>
     <input type="text" [(ngModel)]="searchParams.division" />
   </div>
   <div>
-    <strong>Owner:</strong>
+    <strong>Owner</strong>
     <input type="text" [(ngModel)]="searchParams.project_owner" />
   </div>
   <div>
-    <strong>Budget:</strong>
+    <strong>Budget</strong>
     <input type="text" [(ngModel)]="searchParams.budget" />
   </div>
   <div>
-    <strong>Status:</strong>
+    <strong>Status</strong>
     <input type="text" [(ngModel)]="searchParams.status" />
   </div>
   <div>
-    <strong>Created:</strong>
+    <strong>Created</strong>
     <input type="date" [(ngModel)]="searchParams.createdFrom" />
-    to
+    <strong> to </strong>
     <input type="date" [(ngModel)]="searchParams.createdTo" />
   </div>
   <div>
-    <strong>Modified:</strong>
+    <strong>Modified</strong>
     <input type="date" [(ngModel)]="searchParams.modifiedFrom" />
-    to
+    <strong> to </strong>
     <input type="date" [(ngModel)]="searchParams.modifiedTo" />
   </div>
   <button (click)="isSearchVisible=false" type="button">Close</button>
