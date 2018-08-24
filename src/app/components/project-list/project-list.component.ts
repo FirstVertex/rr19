@@ -9,7 +9,7 @@ import { ProjectSearchViewModel } from 'src/app/models/project-search-viewmodel'
 @Component({
   selector: 'app-project-list',
   templateUrl: './project-list.component.html',
-  styleUrls: ['./project-list.component.css']
+  styleUrls: ['./project-list.component.scss']
 })
 export class ProjectListComponent implements OnInit {
   public projects: ProjectViewModel[];
