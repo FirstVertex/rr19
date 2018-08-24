@@ -46,7 +46,7 @@ export class ProjectListComponent implements OnInit {
       .reduce((a, b) => a + b, 0).toFixed(2);
   }
 
-  public toggle(vm: ProjectViewModel) {
+  public close(vm: ProjectViewModel) {
     vm.toggle();
     // do this async to allow row to collapse first
     timer(0).subscribe(_=> this.notificationService.info('Project updated'));
