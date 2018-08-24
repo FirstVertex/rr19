@@ -12,6 +12,6 @@ export class NotificationService {
 
   public info(notice: string) {
     this.message = notice;
-    timer(1000).subscribe(() => this.message = undefined);
+    timer(2000).subscribe(() => this.message = undefined);
   }
 }
