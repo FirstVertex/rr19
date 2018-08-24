@@ -27,10 +27,7 @@ export class ProjectListComponent implements OnInit {
     this.state = 'loading';
     this.service.getAll()
     .subscribe(
-      (data: Project[]) => {
-        this.projects = data.map(item => new ProjectViewModel(item));
-        console.log(this.projects);
-      },
+      (data: Project[]) => this.projects = data.map(item => new ProjectViewModel(item)),
       (error) => {},  // todo: error handling
       () => this.state = 'idle'
     );

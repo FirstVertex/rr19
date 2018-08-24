@@ -12,6 +12,11 @@ export class ProjectSearchViewModel {
   public modifiedTo: string | null;
 
   public filter(items: ProjectViewModel[]): ProjectViewModel[] {
+    let createdFromDate: Date | undefined = this.createdFrom ? new Date(this.createdFrom) : undefined;
+    let createdToDate: Date | undefined = this.createdTo ? new Date(this.createdTo) : undefined;
+    let modifiedFromDate: Date | undefined = this.modifiedFrom ? new Date(this.modifiedFrom) : undefined;
+    let modifiedToDate: Date | undefined = this.modifiedTo ? new Date(this.modifiedTo) : undefined;
+
     return items.filter(item => {
       let match: boolean = true;
       if (match && this.title && this.title.length) {
@@ -29,17 +34,17 @@ export class ProjectSearchViewModel {
       if (match && this.status && this.status.length) {
         match = match && item.project.status.toLowerCase().indexOf(this.status.toLowerCase()) >= 0;
       }
-      if (match && this.createdFrom) {
-        match = match && item.created >= new Date(this.createdFrom);
+      if (match && createdFromDate) {
+        match = match && item.created >= createdFromDate;
       }
-      if (match && this.createdTo) {
-        match = match && item.created <= new Date(this.createdTo);
+      if (match && createdToDate) {
+        match = match && item.created <= createdToDate;
       }
-      if (match && this.modifiedFrom) {
-        match = match && item.modified >= new Date(this.modifiedFrom);
+      if (match && modifiedFromDate) {
+        match = match && item.modified >= modifiedFromDate;
       }
-      if (match && this.modifiedTo) {
-        match = match && item.modified <= new Date(this.modifiedTo);
+      if (match && modifiedToDate) {
+        match = match && item.modified <= modifiedToDate;
       }
       return match;
     });
