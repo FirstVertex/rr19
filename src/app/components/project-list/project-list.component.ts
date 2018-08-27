@@ -26,27 +26,25 @@ export class ProjectListComponent implements OnInit {
   ngOnInit() {
     this.state = 'loading';
     this.service.getAll()
-    .subscribe(
-      (data: Project[]) => this.projects = data.map(item => new ProjectViewModel(item)),
-      (error) => {},  // todo: error handling
-      () => this.state = 'idle'
-    );
+      .subscribe(
+        (data: Project[]) => this.projects = data.map(item => new ProjectViewModel(item)),
+        (error) => {},  // todo: error handling
+        () => this.state = 'idle'
+      );
   }
 
   public get visibleProjects(): ProjectViewModel[] {
-    if (!this.projects) return [];
-    return this.searchParams.filter(this.projects);
+    return this.service.filter(this.searchParams, this.projects);
   }
 
-  public get budgetTotal(): string | null {
-    return this.visibleProjects.map(item => item.project.budget)
-      .reduce((a, b) => a + b, 0).toFixed(2);
+  public get budgetTotal(): number {
+    return this.service.getBudgetTotal(this.visibleProjects);
   }
 
   public close(vm: ProjectViewModel) {
     vm.toggle();
     // do this async to allow row to collapse first
-    timer(0).subscribe(_=> this.notificationService.info('Project updated'));
+    timer(0).subscribe(() => this.notificationService.info('Project updated'));
   }
 
   public details(vm: ProjectViewModel) {

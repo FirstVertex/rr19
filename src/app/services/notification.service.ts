@@ -5,10 +5,7 @@ import { timer } from 'rxjs';
   providedIn: 'root'
 })
 export class NotificationService {
-
   public message: string | undefined;
-
-  constructor() { }
 
   public info(notice: string) {
     this.message = notice;
