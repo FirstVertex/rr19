@@ -1,0 +1,37 @@
+<button (click)="isVisible=!isVisible" type="button">Filter</button>
+<div class="search" *ngIf="isVisible">
+  <h3>Filter</h3>
+  <div>
+    <strong>Title</strong>
+    <input type="text" [(ngModel)]="service.searchModel.title" />
+  </div>
+  <div>
+    <strong>Division</strong>
+    <input type="text" [(ngModel)]="service.searchModel.division" />
+  </div>
+  <div>
+    <strong>Owner</strong>
+    <input type="text" [(ngModel)]="service.searchModel.project_owner" />
+  </div>
+  <div>
+    <strong>Budget</strong>
+    <input type="text" [(ngModel)]="service.searchModel.budget" />
+  </div>
+  <div>
+    <strong>Status</strong>
+    <input type="text" [(ngModel)]="service.searchModel.status" />
+  </div>
+  <div>
+    <strong>Created</strong>
+    <input type="date" [(ngModel)]="service.searchModel.createdFrom" />
+    <strong> to </strong>
+    <input type="date" [(ngModel)]="service.searchModel.createdTo" />
+  </div>
+  <div>
+    <strong>Modified</strong>
+    <input type="date" [(ngModel)]="service.searchModel.modifiedFrom" />
+    <strong> to </strong>
+    <input type="date" [(ngModel)]="service.searchModel.modifiedTo" />
+  </div>
+  <button (click)="isVisible=false" type="button">Close</button>
+</div>

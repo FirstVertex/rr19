@@ -10,12 +10,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { NotificationService } from './services/notification.service';
 import { NotificationBarComponent } from './components/notification-bar/notification-bar.component';
+import { ProjectSearchComponent } from './components/project-search/project-search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProjectListComponent,
-    NotificationBarComponent
+    NotificationBarComponent,
+    ProjectSearchComponent
   ],
   imports: [
     BrowserModule,

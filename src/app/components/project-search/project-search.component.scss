@@ -1,0 +1,18 @@
+.search {
+  margin: 10px;
+  background: #ddd;
+  border: 1px solid #bbb;
+  padding: 10px;
+  > div {
+    margin: 6px 8px;
+  }
+  input {
+    width: 180px;
+  }
+  div strong:first-child {
+    width: 120px;
+    text-align: right;
+    margin-right: 8px;
+    display: inline-block;
+  }
+}

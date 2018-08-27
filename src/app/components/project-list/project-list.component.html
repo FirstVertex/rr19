@@ -1,46 +1,10 @@
 <button (click)="addProject()" type="button">Add a Project</button>
 <button (click)="exportToExcel()" type="button">Export to Excel</button>
-<button (click)="isSearchVisible=!isSearchVisible" type="button">Filter</button>
-<div class="search" *ngIf="isSearchVisible">
-  <h3>Filter</h3>
-  <div>
-    <strong>Title</strong>
-    <input type="text" [(ngModel)]="searchParams.title" />
-  </div>
-  <div>
-    <strong>Division</strong>
-    <input type="text" [(ngModel)]="searchParams.division" />
-  </div>
-  <div>
-    <strong>Owner</strong>
-    <input type="text" [(ngModel)]="searchParams.project_owner" />
-  </div>
-  <div>
-    <strong>Budget</strong>
-    <input type="text" [(ngModel)]="searchParams.budget" />
-  </div>
-  <div>
-    <strong>Status</strong>
-    <input type="text" [(ngModel)]="searchParams.status" />
-  </div>
-  <div>
-    <strong>Created</strong>
-    <input type="date" [(ngModel)]="searchParams.createdFrom" />
-    <strong> to </strong>
-    <input type="date" [(ngModel)]="searchParams.createdTo" />
-  </div>
-  <div>
-    <strong>Modified</strong>
-    <input type="date" [(ngModel)]="searchParams.modifiedFrom" />
-    <strong> to </strong>
-    <input type="date" [(ngModel)]="searchParams.modifiedTo" />
-  </div>
-  <button (click)="isSearchVisible=false" type="button">Close</button>
-</div>
-<h3 *ngIf="projects" class="align-right">
-    <span *ngIf="visibleProjects.length !== projects.length">Showing <em>{{visibleProjects.length}}</em> of </span>
-    <em>{{projects.length}}</em> Projects
-  </h3>
+<app-project-search></app-project-search>
+<h3 class="align-right">
+  <span *ngIf="service.visibleProjects.length !== service.allProjects.length">Showing <em>{{service.visibleProjects.length}}</em> of </span>
+  <em>{{service.allProjects.length}}</em> Projects
+</h3>
 <table>
   <thead>
     <tr>
@@ -55,7 +19,7 @@
     </tr>
   </thead>
   <tbody>
-    <ng-container *ngFor="let vm of visibleProjects">
+    <ng-container *ngFor="let vm of service.visibleProjects">
       <tr *ngIf="vm.state==='view'">
         <td>{{vm.project.title}}</td>
         <td>{{vm.project.division}}</td>
@@ -92,7 +56,7 @@
   <tfoot>
     <tr>
       <td colspan="3">Total</td>
-      <td>{{budgetTotal | currency}}</td>
+      <td>{{service.budgetTotal | currency}}</td>
       <td colspan="4">&nbsp;</td>
     </tr>
   </tfoot>
